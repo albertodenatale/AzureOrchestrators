@@ -19,9 +19,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ApplicationPackageRoot\ApplicationManifest.xml" />
+    <None Include="Scripts\Deploy-FabricApplication.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationParameters\Cloud.xml" />
+    <Content Include="ApplicationParameters\Local.1Node.xml" />
+    <Content Include="ApplicationParameters\Local.5Node.xml" />
     <Content Include="packages.config" />
+    <Content Include="PublishProfiles\Cloud.xml" />
+    <Content Include="PublishProfiles\Local.1Node.xml" />
+    <Content Include="PublishProfiles\Local.5Node.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Backend\Backend.csproj" />
+    <ProjectReference Include="..\Frontend\Frontend.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

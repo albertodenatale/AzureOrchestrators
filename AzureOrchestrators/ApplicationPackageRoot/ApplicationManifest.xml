@@ -1,9 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest 
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  ApplicationTypeName="VotingType" 
-  ApplicationTypeVersion="1.0.0" 
-  xmlns="http://schemas.microsoft.com/2011/01/fabric">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="AzureOrchestratorsType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Backend_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="Backend_PartitionCount" DefaultValue="1" />
+    <Parameter Name="Backend_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="Frontend_InstanceCount" DefaultValue="-1" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="FrontendPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="BackendPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="Backend">
+      <StatefulService ServiceTypeName="BackendType" TargetReplicaSetSize="[Backend_TargetReplicaSetSize]" MinReplicaSetSize="[Backend_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[Backend_PartitionCount]" LowKey="0" HighKey="25" />
+      </StatefulService>
+    </Service>
+    <Service Name="Frontend" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="FrontendType" InstanceCount="[Frontend_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
 </ApplicationManifest>

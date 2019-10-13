@@ -17,7 +17,7 @@ namespace Frontend
                 // an instance of the class is created in this host process.
 
                 ServiceRuntime.RegisterServiceAsync(
-                    "Frontend",
+                    "FrontendType",
                     context => new FrontendService(context)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(FrontendService).Name);
