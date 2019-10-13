@@ -34,7 +34,7 @@ namespace Frontend
                             {
                                 ServiceEventSource.Current.ServiceMessage(serviceContext, $"Starting Kestrel on {url}");
 
-                                return new WebHostBuilder()
+                                return new WebHostBuilder() 
                                     .UseKestrel()
                                     .ConfigureServices(
                                         services => services

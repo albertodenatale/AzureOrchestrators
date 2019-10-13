@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.ServiceFabric" Version="6.5.664" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="3.4.664" />
     <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.4.664" />
