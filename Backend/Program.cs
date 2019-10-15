@@ -1,20 +1,14 @@
+using Microsoft.ServiceFabric.Services.Runtime;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.ServiceFabric.Services.Runtime;
 
 namespace Backend
 {
-    public class Program
+    internal static class Program
     {
-        public static void Main(string[] args)
+        private static void Main()
         {
             try
             {
@@ -23,8 +17,7 @@ namespace Backend
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
 
-                ServiceRuntime.RegisterServiceAsync(
-                    "BackendType",
+                ServiceRuntime.RegisterServiceAsync("BackendType",
                     context => new BackendService(context)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(BackendService).Name);

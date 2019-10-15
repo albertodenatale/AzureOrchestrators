@@ -1,4 +1,4 @@
-﻿namespace Backend
+namespace Backend
 {
     using System.Collections.Generic;
     using System.Fabric;
@@ -14,7 +14,7 @@
     {
         public BackendService(StatefulServiceContext context)
             : base(context)
-        {
+        { 
         }
 
         /// <summary>
@@ -27,13 +27,13 @@
             {
                 new ServiceReplicaListener(
                     serviceContext =>
-                        new KestrelCommunicationListener(
-                            serviceContext,
-                            (url, listener) =>
-                            {
-                                ServiceEventSource.Current.ServiceMessage(serviceContext, $"Starting Kestrel on {url}");
+                    new KestrelCommunicationListener(
+                        serviceContext, 
+                        (url, listener) =>
+                    {
+                        ServiceEventSource.Current.ServiceMessage(serviceContext, $"Starting Kestrel on {url}");
 
-                                return new WebHostBuilder()
+                        return new WebHostBuilder()
                                     .UseKestrel()
                                     .ConfigureServices(
                                         services => services
@@ -44,7 +44,7 @@
                                     .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.UseUniqueServiceUrl)
                                     .UseUrls(url)
                                     .Build();
-                            }))
+                    }))
             };
         }
     }

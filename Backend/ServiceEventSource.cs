@@ -9,7 +9,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 
 namespace Backend
 {
-    [EventSource(Name = "MyCompany-Test-Web1")]
+    [EventSource(Name = "AzureOrchestrators-Backend")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();

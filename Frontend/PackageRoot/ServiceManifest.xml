@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest Name="FrontendPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
@@ -19,7 +19,7 @@
       </ExeHost>
     </EntryPoint>
     <EnvironmentVariables>
-      <EnvironmentVariable Name="ReverseProxyBaseUri" Value="http://localhost:19081"/>
+      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value=""/>
     </EnvironmentVariables>
   </CodePackage>
 
