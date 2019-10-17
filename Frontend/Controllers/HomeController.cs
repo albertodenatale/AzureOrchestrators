@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Frontend.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +7,9 @@ namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly WeatherForecastService weatherForecastService;
+        private readonly IWeatherForecastService weatherForecastService;
 
-        public HomeController(WeatherForecastService weatherForecastService)
+        public HomeController(IWeatherForecastService weatherForecastService)
         {
             this.weatherForecastService = weatherForecastService;
         }
